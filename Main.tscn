@@ -10,5 +10,5 @@
 position = Vector2(40, 400)
 script = ExtResource("1_tkf05")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fella"]
+[node name="hitbox" type="CollisionShape2D" parent="Fella"]
 shape = SubResource("CircleShape2D_f88x4")
