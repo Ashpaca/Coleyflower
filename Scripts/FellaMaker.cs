@@ -13,7 +13,7 @@ public partial class FellaMaker : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        if (Input.IsActionJustPressed("mouse_1"))
+        if (Input.IsActionJustPressed("mouse_2"))
         {
             Spawn(GetGlobalMousePosition());
         }
