@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dwm1m61uupj67"]
 
 [ext_resource type="Script" path="res://Scripts/Fella.cs" id="1_xpxo6"]
-[ext_resource type="Texture2D" uid="uid://2exl0ts7q552" path="res://Assets/icon.svg" id="2_7iyal"]
+[ext_resource type="Texture2D" uid="uid://de3or3sv848g0" path="res://Assets/carrot-01.png" id="2_aon37"]
 [ext_resource type="Script" path="res://Scripts/Face.cs" id="3_7u1py"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tkytj"]
@@ -14,5 +14,5 @@ shape = SubResource("CircleShape2D_tkytj")
 
 [node name="Face" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_7iyal")
+texture = ExtResource("2_aon37")
 script = ExtResource("3_7u1py")
