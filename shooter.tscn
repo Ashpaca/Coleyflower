@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj3o3yl8y1ovq"]
+
+[ext_resource type="Script" path="res://Scripts/Shooter.cs" id="1_wolpg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xqaep"]
+radius = 5.0
+
+[node name="Shooter" type="Node2D"]
+script = ExtResource("1_wolpg")
+
+[node name="Mouse Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse Area"]
+shape = SubResource("CircleShape2D_xqaep")

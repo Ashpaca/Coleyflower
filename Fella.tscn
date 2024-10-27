@@ -6,7 +6,8 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tkytj"]
 
-[node name="Fella0" type="CharacterBody2D"]
+[node name="Fella0" type="RigidBody2D"]
+gravity_scale = 0.0
 script = ExtResource("1_xpxo6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
