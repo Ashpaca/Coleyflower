@@ -6,7 +6,7 @@ public partial class Shooter : Node2D
 	bool fellaClicked = false;
 	Area2D mouseArea;
 	Fella shootee;
-	float shootPower = 20;
+	float shootPower = 5;
 
 	public override void _Ready()
 	{
@@ -43,6 +43,6 @@ public partial class Shooter : Node2D
 	private void ShootShooter()
 	{
 		Vector2 pullBackDistance = shootee.GlobalPosition - GlobalPosition;
-		shootee.ApplyCentralForce(pullBackDistance * shootPower);
+		shootee.ApplyCentralImpulse(pullBackDistance * shootPower);
 	}
 }
