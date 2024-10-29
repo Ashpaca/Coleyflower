@@ -1,17 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwm1m61uupj67"]
+[gd_scene load_steps=6 format=3 uid="uid://dwm1m61uupj67"]
 
 [ext_resource type="Script" path="res://Scripts/Fella.cs" id="1_xpxo6"]
 [ext_resource type="Texture2D" uid="uid://de3or3sv848g0" path="res://Assets/carrot-01.png" id="2_aon37"]
 [ext_resource type="Script" path="res://Scripts/Face.cs" id="3_7u1py"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tkytj"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dcq28"]
+bounce = 0.6
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fx5ut"]
+radius = 16.0
+height = 32.0
 
 [node name="Fella0" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_dcq28")
 gravity_scale = 0.0
+lock_rotation = true
 script = ExtResource("1_xpxo6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_tkytj")
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_fx5ut")
 
 [node name="Face" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
