@@ -5,7 +5,8 @@
 [ext_resource type="Script" path="res://Scripts/Face.cs" id="3_7u1py"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dcq28"]
-bounce = 0.6
+friction = 0.0
+bounce = 12.85
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fx5ut"]
 radius = 16.0

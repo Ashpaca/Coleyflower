@@ -3,6 +3,8 @@ using System;
 
 public partial class Fella : RigidBody2D
 {
-	// This makes life painful
-	// Coleman's comment
+	public override void _PhysicsProcess(double delta)
+	{	
+		ApplyCentralForce(-LinearVelocity * 2);
+	}
 }
