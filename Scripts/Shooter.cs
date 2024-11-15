@@ -11,11 +11,13 @@ public partial class Shooter : Node2D
 	float powerCoefficient = 5;
 	float theta;
 	float maxPower = 2;
+	Vector2 forceVector;
 
 	public override void _Ready()
 	{
 		mouseArea = GetNode<Area2D>("Mouse Area");
 		shotPointer = GetNode<Sprite2D>("ShotPointer");
+		shotPointer.Visible = false;
     }
 
 	public override void _Process(double delta)
@@ -33,8 +35,9 @@ public partial class Shooter : Node2D
 			theta = Mathf.Atan2(shootee.GlobalPosition.Y - GlobalPosition.Y, shootee.GlobalPosition.X - GlobalPosition.X);
 			shotPointer.Rotation = theta;
 			shotPointer.GlobalPosition = shootee.GlobalPosition;
-			Vector2 forceVector = shootee.GlobalPosition - GlobalPosition;
-			float forcePower = Mathf.Clamp(forceVector.Length()/300, 0, maxPower);
+			Vector2 pullBackDistance = shootee.GlobalPosition - GlobalPosition;
+			float forcePower = Mathf.Clamp(pullBackDistance.Length()/300, 0, maxPower);
+			forceVector = pullBackDistance.Normalized() * forcePower * 300;
 
 			shotPointer.Offset = new Vector2(shootee.radius + 10f/(1 + forcePower), 0f);
 			shotPointer.Scale = new Vector2(1 + forcePower, 1 + forcePower);
@@ -61,7 +64,6 @@ public partial class Shooter : Node2D
 
 	private void ShootShooter()
 	{
-		Vector2 pullBackDistance = shootee.GlobalPosition - GlobalPosition;
-		shootee.ApplyCentralImpulse(pullBackDistance * powerCoefficient);
+		shootee.ApplyCentralImpulse(forceVector * powerCoefficient);
 	}
 }

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://x3276k6nk7yd"]
 
-[ext_resource type="PackedScene" uid="uid://dwm1m61uupj67" path="res://Disc.tscn" id="1_aaajl"]
 [ext_resource type="TileSet" uid="uid://b20ta2pq7fkog" path="res://LevelTileSet.tres" id="1_dw280"]
+[ext_resource type="PackedScene" uid="uid://dwm1m61uupj67" path="res://Disc.tscn" id="2_p0o7h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txp5e"]
 size = Vector2(50, 1000)
@@ -20,9 +20,6 @@ size = Vector2(1000, 50)
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAHAAAAAAAHAAAAAAAGAAAAAAAGAAAAAAAFAAAAAAAGAAAAAAAEAAAAAAAGAAAAAAADAAAAAAAGAAAAAAACAAAAAAAGAAAAAAABAAAAAAAGAAAAAAAAAAAAAAAFAAAAAAAAAAEAAAAFAAEAAAAAAAIAAAAFAAEAAAAAAAMAAAAFAAIAAAABAAMAAAAGAAIAAAACAAMAAAAGAAIAAAADAAMAAAAGAAIAAAAEAAMAAAAGAAIAAAAFAAMAAAAGAAIAAAAGAAMAAAAGAAIAAAAHAAMAAAAHAAIAAAAHAAIAAAAHAAEAAAAHAAEAAAAHAAEAAAABAAEAAAAGAAEAAAACAAEAAAAGAAEAAAADAAEAAAAGAAEAAAAEAAEAAAAGAAEAAAAFAAEAAAAGAAEAAAAGAAEAAAAGAAEAAAAGAAIAAAAGAAEAAAAFAAIAAAABAAsAAAAEAAIAAAAGAAEAAAADAAIAAAAGAAEAAAACAAIAAAAGAAEAAAABAAIAAAAGAAEAAAAAAAQAAAAKAAAAAAABAAQAAAAMAAAAAAAAAAUAAAAKAAIAAAABAAUAAAAMAAIAAAACAAQAAAABAAEAAAADAAQAAAABAAEAAAAEAAQAAAABAAEAAAAFAAQAAAABAAEAAAAGAAQAAAABAAEAAAAHAAQAAAABAAEAAAAHAAUAAAABAAEAAAAGAAUAAAABAAEAAAAFAAUAAAABAAEAAAAEAAUAAAABAAEAAAADAAUAAAABAAEAAAACAAUAAAABAAEAAAA=")
 tile_set = ExtResource("1_dw280")
-
-[node name="Fella0" parent="." instance=ExtResource("1_aaajl")]
-position = Vector2(436, 245)
 
 [node name="Wall0" type="StaticBody2D" parent="."]
 
@@ -47,3 +44,6 @@ shape = SubResource("RectangleShape2D_k5ceu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3"]
 position = Vector2(485, -19)
 shape = SubResource("RectangleShape2D_4on5s")
+
+[node name="Fella0" parent="." instance=ExtResource("2_p0o7h")]
+position = Vector2(415, 288)
