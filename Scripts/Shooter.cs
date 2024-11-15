@@ -7,7 +7,7 @@ public partial class Shooter : Node2D
 	bool fellaClicked = false;
 	Area2D mouseArea;
 	Sprite2D shotPointer;
-	Fella shootee;
+	Disc shootee;
 	float shootPower = 5;
 	float theta;
 
@@ -41,13 +41,13 @@ public partial class Shooter : Node2D
 		}
 	}
 
-    private Fella FindShootee()
+    private Disc FindShootee()
 	{
 		foreach (PhysicsBody2D body in mouseArea.GetOverlappingBodies())
 		{
-			if (body is Fella)
+			if (body is Disc)
 			{
-				return (Fella)body;
+				return (Disc)body;
 			}
 		}
 		return null;

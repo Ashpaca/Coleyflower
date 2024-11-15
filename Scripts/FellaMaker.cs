@@ -21,7 +21,7 @@ public partial class FellaMaker : Node2D
 
     private void Spawn(Vector2 MousePosition)
 	{
-        Fella foo = FellaScene.Instantiate<Fella>();
+        Disc foo = FellaScene.Instantiate<Disc>();
         foo.Position = new Vector2(MousePosition.X, MousePosition.Y);
         GetTree().Root.AddChild(foo);
     }

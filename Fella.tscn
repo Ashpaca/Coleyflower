@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dwm1m61uupj67"]
 
-[ext_resource type="Script" path="res://Scripts/Fella.cs" id="1_xpxo6"]
+[ext_resource type="Script" path="res://Scripts/Disc.cs" id="1_xpxo6"]
 [ext_resource type="Texture2D" uid="uid://duim0ky1qdw5e" path="res://Assets/cauliflower-02.png" id="2_kg655"]
 [ext_resource type="Script" path="res://Scripts/Face.cs" id="3_7u1py"]
 
