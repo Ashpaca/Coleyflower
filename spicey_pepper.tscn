@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://wfpyk8ent6gm"]
+
+[ext_resource type="Script" path="res://Scripts/SpiceyPepper.cs" id="1_e1087"]
+[ext_resource type="Texture2D" uid="uid://de3or3sv848g0" path="res://Assets/carrot-01.png" id="2_migxi"]
+[ext_resource type="Script" path="res://Scripts/Face.cs" id="2_qgbq3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gjjp1"]
+friction = 0.0
+bounce = 6.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l01du"]
+radius = 64.0
+height = 138.0
+
+[node name="SpiceyPepper0" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_gjjp1")
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_e1087")
+radius = 70.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_l01du")
+
+[node name="Face" type="Sprite2D" parent="."]
+texture = ExtResource("2_migxi")
+script = ExtResource("2_qgbq3")
