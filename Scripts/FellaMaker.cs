@@ -3,7 +3,7 @@ using System;
 
 public partial class FellaMaker : Node2D
 {
-	PackedScene FellaScene = GD.Load<PackedScene>("res://Fella.tscn");
+	PackedScene FellaScene = GD.Load<PackedScene>("res://Disc.tscn");
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

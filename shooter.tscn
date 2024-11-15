@@ -17,4 +17,3 @@ shape = SubResource("CircleShape2D_xqaep")
 [node name="ShotPointer" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("2_n1fjm")
-offset = Vector2(50, 0)

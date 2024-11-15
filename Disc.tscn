@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dwm1m61uupj67"]
 
-[ext_resource type="Script" path="res://Scripts/Disc.cs" id="1_xpxo6"]
-[ext_resource type="Texture2D" uid="uid://duim0ky1qdw5e" path="res://Assets/cauliflower-02.png" id="2_kg655"]
-[ext_resource type="Script" path="res://Scripts/Face.cs" id="3_7u1py"]
+[ext_resource type="Script" path="res://Scripts/Disc.cs" id="1_uoedd"]
+[ext_resource type="Texture2D" uid="uid://duim0ky1qdw5e" path="res://Assets/cauliflower-02.png" id="2_nm6y6"]
+[ext_resource type="Script" path="res://Scripts/Face.cs" id="3_51tnj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dcq28"]
 friction = 0.0
@@ -13,16 +13,19 @@ radius = 59.998
 height = 122.793
 
 [node name="Fella0" type="RigidBody2D"]
+position = Vector2(2, 2)
 physics_material_override = SubResource("PhysicsMaterial_dcq28")
 gravity_scale = 0.0
 lock_rotation = true
-script = ExtResource("1_xpxo6")
+script = ExtResource("1_uoedd")
+radius = 70.0
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -2)
 rotation = -0.6353
 shape = SubResource("CapsuleShape2D_0bkdq")
 
 [node name="Face" type="Sprite2D" parent="."]
-texture = ExtResource("2_kg655")
-script = ExtResource("3_7u1py")
+position = Vector2(2, 2)
+texture = ExtResource("2_nm6y6")
+script = ExtResource("3_51tnj")

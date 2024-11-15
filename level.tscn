@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://x3276k6nk7yd"]
 
-[ext_resource type="PackedScene" uid="uid://dwm1m61uupj67" path="res://Fella.tscn" id="1_aaajl"]
+[ext_resource type="PackedScene" uid="uid://dwm1m61uupj67" path="res://Disc.tscn" id="1_aaajl"]
 [ext_resource type="TileSet" uid="uid://b20ta2pq7fkog" path="res://LevelTileSet.tres" id="1_dw280"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txp5e"]
