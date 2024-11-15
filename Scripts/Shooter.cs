@@ -1,17 +1,21 @@
 using Godot;
 using System;
+using System.Reflection;
 
 public partial class Shooter : Node2D
 {
 	bool fellaClicked = false;
 	Area2D mouseArea;
+	Sprite2D shotPointer;
 	Fella shootee;
 	float shootPower = 5;
+	float theta;
 
 	public override void _Ready()
 	{
 		mouseArea = GetNode<Area2D>("Mouse Area");
-	}
+		shotPointer = GetNode<Sprite2D>("ShotPointer");
+    }
 
 	public override void _Process(double delta)
 	{
@@ -22,9 +26,17 @@ public partial class Shooter : Node2D
 			shootee = FindShootee();
 		}
 
+		if (Input.IsActionPressed("mouse_1") && shootee != null)
+		{
+			shotPointer.Visible = true;
+			theta = Mathf.Atan2(GlobalPosition.Y - shootee.GlobalPosition.Y, GlobalPosition.X - shootee.GlobalPosition.X);
+			//shotPointer.Rotate(theta);
+		}
+
 		if (Input.IsActionJustReleased("mouse_1") && shootee != null)
 		{
 			ShootShooter();
+			shotPointer.Visible = false;
 		}
 	}
 

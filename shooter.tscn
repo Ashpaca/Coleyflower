@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj3o3yl8y1ovq"]
+[gd_scene load_steps=4 format=3 uid="uid://cj3o3yl8y1ovq"]
 
 [ext_resource type="Script" path="res://Scripts/Shooter.cs" id="1_wolpg"]
+[ext_resource type="Texture2D" uid="uid://c7rhvxqj1rntg" path="res://Assets/pointer.png" id="2_n1fjm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xqaep"]
 radius = 5.0
@@ -12,3 +13,8 @@ script = ExtResource("1_wolpg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse Area"]
 shape = SubResource("CircleShape2D_xqaep")
+
+[node name="ShotPointer" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_n1fjm")
+offset = Vector2(0, -50)

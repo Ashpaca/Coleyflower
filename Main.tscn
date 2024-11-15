@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfods5162q50v"]
 
-[ext_resource type="PackedScene" uid="uid://cj3o3yl8y1ovq" path="res://shooter.tscn" id="2_5f5nc"]
+[ext_resource type="PackedScene" uid="uid://cj3o3yl8y1ovq" path="res://Shooter.tscn" id="2_5f5nc"]
 [ext_resource type="PackedScene" uid="uid://cn5f1jtadyqrg" path="res://FellaMaker.tscn" id="2_6ueek"]
 [ext_resource type="PackedScene" uid="uid://x3276k6nk7yd" path="res://level.tscn" id="3_wewt5"]
 
