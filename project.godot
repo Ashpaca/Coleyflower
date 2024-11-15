@@ -19,6 +19,7 @@ config/icon="res://Assets/icon.svg"
 
 window/size/viewport_width=960
 window/size/viewport_height=680
+window/stretch/mode="viewport"
 
 [dotnet]
 

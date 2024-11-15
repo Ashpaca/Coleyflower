@@ -29,8 +29,9 @@ public partial class Shooter : Node2D
 		if (Input.IsActionPressed("mouse_1") && shootee != null)
 		{
 			shotPointer.Visible = true;
-			theta = Mathf.Atan2(GlobalPosition.Y - shootee.GlobalPosition.Y, GlobalPosition.X - shootee.GlobalPosition.X);
-			//shotPointer.Rotate(theta);
+			theta = Mathf.Atan2(shootee.GlobalPosition.Y - GlobalPosition.Y, shootee.GlobalPosition.X - GlobalPosition.X);
+			shotPointer.Rotation = theta;
+			shotPointer.GlobalPosition = shootee.GlobalPosition;
 		}
 
 		if (Input.IsActionJustReleased("mouse_1") && shootee != null)
