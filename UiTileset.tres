@@ -1,9 +1,0 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cuohkalqp72u3"]
-
-[ext_resource type="Texture2D" uid="uid://cvexw55oxbf3e" path="res://Assets/Spritesheets/uipack_rpg_sheet.png" id="1_hm7mb"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8pki5"]
-texture = ExtResource("1_hm7mb")
-
-[resource]
-sources/0 = SubResource("TileSetAtlasSource_8pki5")

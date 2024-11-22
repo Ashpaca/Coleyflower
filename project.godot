@@ -25,6 +25,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="Coleyflower"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/kenny_spritesheet_importer/plugin.cfg")
+
 [input]
 
 mouse_1={
