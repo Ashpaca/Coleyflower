@@ -5,6 +5,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_vdkh1"]
 
 [node name="Flame" type="Node2D"]
+scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -6)
