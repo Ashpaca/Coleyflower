@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://buh72gjstaro2"]
+
+[ext_resource type="Texture2D" uid="uid://c4qtcojaormn3" path="res://Assets/Flame.png" id="1_tx5te"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vdkh1"]
+
+[node name="Flame" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = ExtResource("1_tx5te")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_vdkh1")
