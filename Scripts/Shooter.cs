@@ -23,7 +23,10 @@ public partial class Shooter : Node2D
 	public override void _Process(double delta)
 	{
 		GlobalPosition = GetGlobalMousePosition();
+	}
 
+	public bool HandleMouseInput() //Some of the logic in this function should probably be moved to the gamestate controller class
+	{
 		if (Input.IsActionJustPressed("mouse_1"))
 		{
 			shootee = FindShootee();
@@ -47,7 +50,9 @@ public partial class Shooter : Node2D
 		{
 			ShootShooter();
 			shotPointer.Visible = false;
+			return true;
 		}
+		return false;
 	}
 
     private Disc FindShootee()

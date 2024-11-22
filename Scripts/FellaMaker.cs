@@ -13,16 +13,14 @@ public partial class FellaMaker : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        if (Input.IsActionJustPressed("mouse_2"))
-        {
-            Spawn(GetGlobalMousePosition());
-        }
+        
     }
 
-    private void Spawn(Vector2 MousePosition)
+    public Disc Spawn(Vector2 MousePosition)
 	{
         Disc foo = FellaScene.Instantiate<Disc>();
         foo.Position = new Vector2(MousePosition.X, MousePosition.Y);
         GetTree().Root.AddChild(foo);
+        return foo;
     }
 }
