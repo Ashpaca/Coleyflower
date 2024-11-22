@@ -5,7 +5,7 @@ public partial class SpiceyPepper : Disc
 {
 	const int MAX_FLAMES = 20;
 	PackedScene flameScene = GD.Load<PackedScene>("res://flame.tscn");
-	double timeScinceLastFlame = 0;
+	double timeSinceLastFlame = 0;
 	Node2D[] createdFlames;
 	int numberOfFlames = 0;
 
@@ -18,10 +18,10 @@ public partial class SpiceyPepper : Disc
 	public override void _PhysicsProcess(double delta)
 	{
 		base._PhysicsProcess(delta);
-		timeScinceLastFlame += delta;
-		if (timeScinceLastFlame >= .1 && numberOfFlames < MAX_FLAMES)
+		timeSinceLastFlame += delta;
+		if (timeSinceLastFlame >= .1 && numberOfFlames < MAX_FLAMES)
 		{
-			timeScinceLastFlame = 0;
+			timeSinceLastFlame = 0;
 			Node2D flameInstance = flameScene.Instantiate<Node2D>();
         	flameInstance.Position = GlobalPosition;
 			createdFlames[numberOfFlames] = flameInstance;

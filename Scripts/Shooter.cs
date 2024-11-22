@@ -70,5 +70,6 @@ public partial class Shooter : Node2D
 	private void ShootShooter()
 	{
 		shootee.ApplyCentralImpulse(forceVector * powerCoefficient);
+		shootee = null;
 	}
 }
