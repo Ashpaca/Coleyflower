@@ -15,4 +15,14 @@ public partial class Disc : RigidBody2D
 	{	
 		ApplyCentralForce(-LinearVelocity * 2);
 	}
+
+	public virtual void OnFlickEffects()
+	{
+
+	}
+
+	public virtual void EndTurn()
+	{
+
+	}
 }

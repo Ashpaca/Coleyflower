@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=4 uid="uid://x3276k6nk7yd"]
+[gd_scene load_steps=6 format=4 uid="uid://x3276k6nk7yd"]
 
 [ext_resource type="TileSet" uid="uid://b20ta2pq7fkog" path="res://LevelTileSet.tres" id="1_dw280"]
-[ext_resource type="PackedScene" uid="uid://wfpyk8ent6gm" path="res://spicey_pepper.tscn" id="3_wa60o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txp5e"]
 size = Vector2(50, 1000)
@@ -44,6 +43,3 @@ shape = SubResource("RectangleShape2D_k5ceu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3"]
 position = Vector2(485, -19)
 shape = SubResource("RectangleShape2D_4on5s")
-
-[node name="SpiceyPepper0" parent="." instance=ExtResource("3_wa60o")]
-position = Vector2(552, 474)

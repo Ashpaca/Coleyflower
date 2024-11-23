@@ -14,7 +14,10 @@ public partial class GameStateController : Node2D
 	List<Disc> enemyDiscs = new List<Disc>();
 
 	FellaMaker fellaMaker;
+	int discType = 0;
 	Shooter shooter;
+	Disc shootee;
+	Vector2 forceToApply;
 	double stateChangeTimer = 0;
 	int stateToBe = 0;
 	bool shouldChangeState = false;
@@ -39,10 +42,15 @@ public partial class GameStateController : Node2D
 			return;
 		}
 
+		//Temporary things for testing purposes
 		if (Input.IsActionJustPressed("mouse_2"))
         {
-            playerDiscs.Add(fellaMaker.Spawn(GetGlobalMousePosition()));
+            playerDiscs.Add(fellaMaker.Spawn(GetGlobalMousePosition(), discType));
         }
+		if (Input.IsActionJustPressed("scroll_down"))
+		{
+			discType = (discType + 1) % 2;
+		}
 
 		switch(gameState) 
 		{
@@ -73,8 +81,20 @@ public partial class GameStateController : Node2D
 
 	private void PlayerSelection()
 	{
-		if (shooter.HandleMouseInput())
+		if (Input.IsActionJustPressed("mouse_1"))
 		{
+			shootee = shooter.FindShootee();
+		}
+		if (Input.IsActionPressed("mouse_1") && shootee != null)
+		{
+			forceToApply = shooter.AimShot(shootee);
+		}
+		if (Input.IsActionJustReleased("mouse_1") && shootee != null)
+		{
+			shooter.ShootShootee(shootee);
+			shootee.OnFlickEffects();
+			shootee = null;
+			forceToApply = Vector2.Zero;
 			ChangeState(PLAYER_LAUNCH);
 		}
 	}
@@ -99,6 +119,14 @@ public partial class GameStateController : Node2D
 		
 		if (doneMoving)
 		{
+			foreach (Disc d in playerDiscs)
+			{
+				d.EndTurn();
+			}
+			foreach (Disc d in enemyDiscs)
+			{
+				d.EndTurn();
+			}
 			ChangeState(ENEMY_SELECTION);
 		} 
 	}

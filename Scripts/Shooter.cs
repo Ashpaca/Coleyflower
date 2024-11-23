@@ -25,37 +25,7 @@ public partial class Shooter : Node2D
 		GlobalPosition = GetGlobalMousePosition();
 	}
 
-	public bool HandleMouseInput() //Some of the logic in this function should probably be moved to the gamestate controller class
-	{
-		if (Input.IsActionJustPressed("mouse_1"))
-		{
-			shootee = FindShootee();
-		}
-
-		if (Input.IsActionPressed("mouse_1") && shootee != null)
-		{
-			shotPointer.Visible = true;
-			theta = Mathf.Atan2(shootee.GlobalPosition.Y - GlobalPosition.Y, shootee.GlobalPosition.X - GlobalPosition.X);
-			shotPointer.Rotation = theta;
-			shotPointer.GlobalPosition = shootee.GlobalPosition;
-			Vector2 pullBackDistance = shootee.GlobalPosition - GlobalPosition;
-			float forcePower = Mathf.Clamp(pullBackDistance.Length()/300, 0, maxPower);
-			forceVector = pullBackDistance.Normalized() * forcePower * 300;
-
-			shotPointer.Offset = new Vector2(shootee.radius + 10f/(1 + forcePower), 0f);
-			shotPointer.Scale = new Vector2(1 + forcePower, 1 + forcePower);
-        }
-
-		if (Input.IsActionJustReleased("mouse_1") && shootee != null)
-		{
-			ShootShooter();
-			shotPointer.Visible = false;
-			return true;
-		}
-		return false;
-	}
-
-    private Disc FindShootee()
+    public Disc FindShootee()
 	{
 		foreach (PhysicsBody2D body in mouseArea.GetOverlappingBodies())
 		{
@@ -67,9 +37,24 @@ public partial class Shooter : Node2D
 		return null;
 	}
 
-	private void ShootShooter()
+	public Vector2 AimShot(Disc shootee)
+	{
+		shotPointer.Visible = true;
+		theta = Mathf.Atan2(shootee.GlobalPosition.Y - GlobalPosition.Y, shootee.GlobalPosition.X - GlobalPosition.X);
+		shotPointer.Rotation = theta;
+		shotPointer.GlobalPosition = shootee.GlobalPosition;
+		Vector2 pullBackDistance = shootee.GlobalPosition - GlobalPosition;
+		float forcePower = Mathf.Clamp(pullBackDistance.Length()/300, 0, maxPower);
+		forceVector = pullBackDistance.Normalized() * forcePower * 300;
+
+		shotPointer.Offset = new Vector2(shootee.radius + 10f/(1 + forcePower), 0f);
+		shotPointer.Scale = new Vector2(1 + forcePower, 1 + forcePower);
+		return forceVector;
+	}
+
+	public void ShootShootee(Disc shootee)
 	{
 		shootee.ApplyCentralImpulse(forceVector * powerCoefficient);
-		shootee = null;
+		shotPointer.Visible = false;
 	}
 }
