@@ -25,6 +25,9 @@ public partial class Shooter : Node2D
 		GlobalPosition = GetGlobalMousePosition();
 	}
 
+	/**
+	* Return: The first disc found under the mouse pointer. Or null if no Discs found.
+	*/
     public Disc FindShootee()
 	{
 		foreach (PhysicsBody2D body in mouseArea.GetOverlappingBodies())
@@ -37,6 +40,13 @@ public partial class Shooter : Node2D
 		return null;
 	}
 
+	/**
+	* Return: Force Vector to apply to the flicked Disc. The actual value applied to the disc is
+	*	the local copy of this vector. The returned value is in case the GameStateController needs
+	*	to know how much force is going to be applied.
+	* Handles displaying the arrow for visualising the shot, and calculating the amount of force
+	* that should be applied to the selected disc. Clamps the power between 0 and maxPower.
+	*/
 	public Vector2 AimShot(Disc shootee)
 	{
 		shotPointer.Visible = true;
@@ -52,6 +62,10 @@ public partial class Shooter : Node2D
 		return forceVector;
 	}
 
+	/**
+	* Parameter: shootee - the Disc that will be flicked and have a impulse applied to it.
+	* Applies the force vector and also hides the aiming arrow.
+	*/
 	public void ShootShootee(Disc shootee)
 	{
 		shootee.ApplyCentralImpulse(forceVector * powerCoefficient);

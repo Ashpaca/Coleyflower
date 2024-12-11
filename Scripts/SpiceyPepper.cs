@@ -22,6 +22,7 @@ public partial class SpiceyPepper : Disc
 	{
 		base._PhysicsProcess(delta);
 
+		// if startFlaming is true it will spawn a flameInstance every few seconds until a maximum number is reached
 		if (startFlaming)
 		{
 			timeSinceLastFlame += delta;
@@ -41,12 +42,20 @@ public partial class SpiceyPepper : Disc
 		}
 	}
 
+	/**
+	* Lets the SpiceyPepper know it should start spawning flames behind it. And sets how long the
+	* flames stick around. Currently set to 2 rounds.
+	*/
 	public override void OnFlickEffects()
 	{
 		startFlaming = true;
 		flameRoundTimer = 2;
 	}
 
+	/**
+	* If the SpiceyPepper is spawning flames, it stops it. Decrements the flame round timer, and
+	* deletes all the spawned flames if the timer reaches 0.
+	*/
 	public override void EndTurn()
 	{
 		flameRoundTimer -= 1;

@@ -31,6 +31,7 @@ public partial class GameStateController : Node2D
 	
 	public override void _Process(double delta)
 	{
+		// Changes the state after a short delay
 		if (shouldChangeState)
 		{
 			stateChangeTimer -= delta;
@@ -42,7 +43,7 @@ public partial class GameStateController : Node2D
 			return;
 		}
 
-		//Temporary things for testing purposes
+		// Temporary things for testing purposes, used for spawning in new Discs
 		if (Input.IsActionJustPressed("mouse_2"))
         {
             playerDiscs.Add(fellaMaker.Spawn(GetGlobalMousePosition(), discType));
@@ -72,6 +73,12 @@ public partial class GameStateController : Node2D
 		}
 	}
 
+	/**
+	* Parameters: state - an int representing the current stage in a turn. Should use the consts
+	*				defined above.
+	* Called when the game's state should change. A short delay is added to allow for any end of
+	*	state actions to take place before the next state starts.
+	*/
 	private void ChangeState(int state)
 	{
 		shouldChangeState = true;
@@ -79,6 +86,10 @@ public partial class GameStateController : Node2D
 		stateChangeTimer = .1;
 	}
 
+	/**
+	* Called during the PLAYER_SELECTION state. Allows the user to select and flick their desired
+	*	Disc for the turn.
+	*/
 	private void PlayerSelection()
 	{
 		if (Input.IsActionJustPressed("mouse_1"))
@@ -99,6 +110,10 @@ public partial class GameStateController : Node2D
 		}
 	}
 
+	/**
+	* Called during the PLAYER_LAUNCH state. Checks for all Discs to have stopped moving. When they
+	*	have then it calls the EndTurn function on each Disc.
+	*/
 	private void PlayerLaunch()
 	{
 		bool doneMoving = true;
