@@ -10,11 +10,11 @@ public partial class GameStateController : Node2D
 	const int ENEMY_LAUNCH = 4;
 	int gameState = PLAYER_SELECTION;
 
-	List<Disc> playerDiscs = new List<Disc>();
-	List<Disc> enemyDiscs = new List<Disc>();
+	List<Disc> Discs = new List<Disc>();
 
 	FellaMaker fellaMaker;
 	int discType = 0;
+	bool isPlayersDisc = true;
 	Shooter shooter;
 	Disc shootee;
 	Vector2 forceToApply;
@@ -46,7 +46,10 @@ public partial class GameStateController : Node2D
 		// Temporary things for testing purposes, used for spawning in new Discs
 		if (Input.IsActionJustPressed("mouse_2"))
         {
-            playerDiscs.Add(fellaMaker.Spawn(GetGlobalMousePosition(), discType));
+			Disc newDisc = fellaMaker.Spawn(GetGlobalMousePosition(), discType);
+			newDisc.player = isPlayersDisc;
+			Discs.Add(newDisc);
+			isPlayersDisc = !isPlayersDisc;
         }
 		if (Input.IsActionJustPressed("scroll_down"))
 		{
@@ -117,14 +120,7 @@ public partial class GameStateController : Node2D
 	private void PlayerLaunch()
 	{
 		bool doneMoving = true;
-		foreach (Disc d in playerDiscs)
-		{
-			if (d.LinearVelocity.LengthSquared() > 0.1)
-			{
-				doneMoving = false;
-			}
-		}
-		foreach (Disc d in enemyDiscs)
+		foreach (Disc d in Discs)
 		{
 			if (d.LinearVelocity.LengthSquared() > 0.1)
 			{
@@ -134,11 +130,7 @@ public partial class GameStateController : Node2D
 		
 		if (doneMoving)
 		{
-			foreach (Disc d in playerDiscs)
-			{
-				d.EndTurn();
-			}
-			foreach (Disc d in enemyDiscs)
+			foreach (Disc d in Discs)
 			{
 				d.EndTurn();
 			}

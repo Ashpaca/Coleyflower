@@ -32,9 +32,9 @@ public partial class Shooter : Node2D
 	{
 		foreach (PhysicsBody2D body in mouseArea.GetOverlappingBodies())
 		{
-			if (body is Disc)
+			if (body is Disc disc && disc.player)
 			{
-				return (Disc)body;
+				return disc;
 			}
 		}
 		return null;

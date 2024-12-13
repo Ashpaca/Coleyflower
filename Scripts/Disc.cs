@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class Disc : RigidBody2D
 {
@@ -9,13 +11,61 @@ public partial class Disc : RigidBody2D
 	public int health { get; set; }
 	[Export]
 	public int damage { get; set; }
-	// There will be more 
+	[Export]
+	public bool player { get; set; }
+	[Export]
+	public int numberOfFlicks { get; set; }
+    // There will be more 
 
-	public override void _PhysicsProcess(double delta)
+	List<Disc> discCollisions = new List<Disc>();
+	List<Disc> handledDiscCollisions = new List<Disc>();
+
+    public override void _PhysicsProcess(double delta)
 	{	
 		// Adds drag to the Disc
 		ApplyCentralForce(-LinearVelocity * 2);
+
+		// May need to change this, but the idea is to stop discs sooner if they are moving really slowly
+		if (LinearVelocity.LengthSquared() < 100)
+		{
+			ApplyCentralForce(-LinearVelocity * 100);
+		}
+
+		//CheckCollisons();
 	}
+
+	/*private void CheckCollisons()
+	{	
+		List<Disc> collisions = new List<Disc>();
+		foreach (PhysicsBody2D body in GetCollidingBodies())
+		{
+			if (body is Disc disc)
+			{
+				collisions.Add(disc);
+			}
+		}
+
+		handledDiscCollisions = handledDiscCollisions.Intersect(collisions).ToList<Disc>();
+
+		foreach (PhysicsBody2D body in bodyCollisons)
+		{
+			if (body is Disc disc)
+			{
+				bool newCollision = true;
+				foreach (Disc d in handledDiscCollisions)
+				{
+					if (disc == d)
+					{
+						newCollision = false;
+					}
+				}
+				if (newCollision)
+				{
+					discCollisions.Add(disc);
+				}
+			}
+		}
+	}*/
 
 	/**
 	* Parameters: Currently None

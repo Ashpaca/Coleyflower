@@ -19,6 +19,9 @@ gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_uoedd")
 radius = 70.0
+health = 4
+damage = 1
+numberOfFlicks = 1
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

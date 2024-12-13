@@ -13,12 +13,6 @@ public partial class FellaMaker : Node2D
 		DiscsToSpawn = new PackedScene[2] {FellaScene, SpiceyPepperScene};
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-        
-    }
-
     public Disc Spawn(Vector2 MousePosition, int discNum)
 	{
         Disc foo = DiscsToSpawn[discNum].Instantiate<Disc>();
