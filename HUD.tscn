@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkydbw78m23r1"]
 
-[ext_resource type="Script" path="res://HUD.cs" id="1_25clh"]
+[ext_resource type="Script" path="res://Scripts/HUD.cs" id="1_25clh"]
 [ext_resource type="FontFile" uid="uid://b7pmc5ce4o84j" path="res://Assets/Fonts/MetalMania-Regular.ttf" id="2_18yon"]
 
 [node name="HUD" type="CanvasLayer"]
