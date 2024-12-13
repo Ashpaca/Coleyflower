@@ -55,6 +55,15 @@ public partial class GameStateController : Node2D
 		{
 			discType = (discType + 1) % 2;
 		}
+		// temp tests for collisions
+		foreach (Disc disc in Discs)
+		{
+			List<Disc> collisons = disc.HandleCollisons();
+			foreach (Disc d in collisons)
+			{
+				GD.Print(d);
+			}
+		}
 
 		switch(gameState) 
 		{

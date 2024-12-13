@@ -31,13 +31,13 @@ public partial class Disc : RigidBody2D
 			ApplyCentralForce(-LinearVelocity * 100);
 		}
 
-		//CheckCollisons();
+		CheckCollisons();
 	}
 
-	/*private void CheckCollisons()
+	private void CheckCollisons()
 	{	
 		List<Disc> collisions = new List<Disc>();
-		foreach (PhysicsBody2D body in GetCollidingBodies())
+		foreach (Node2D body in GetCollidingBodies())
 		{
 			if (body is Disc disc)
 			{
@@ -46,26 +46,21 @@ public partial class Disc : RigidBody2D
 		}
 
 		handledDiscCollisions = handledDiscCollisions.Intersect(collisions).ToList<Disc>();
+		discCollisions = collisions.Except(handledDiscCollisions).ToList<Disc>();
+	}
 
-		foreach (PhysicsBody2D body in bodyCollisons)
-		{
-			if (body is Disc disc)
-			{
-				bool newCollision = true;
-				foreach (Disc d in handledDiscCollisions)
-				{
-					if (disc == d)
-					{
-						newCollision = false;
-					}
-				}
-				if (newCollision)
-				{
-					discCollisions.Add(disc);
-				}
-			}
-		}
-	}*/
+	/**
+	* Return: a list containing all the Discs this is currently colliding with not including Discs
+	*	that are still in contact with this that have already been handled
+	* This function should be called by the GameStateController, at which point all returned Discs
+	*	will be considered handled.
+	*/
+	public List<Disc> HandleCollisons()
+	{
+		discCollisions = discCollisions.Except(handledDiscCollisions).ToList<Disc>();
+		handledDiscCollisions = handledDiscCollisions.Union(discCollisions).ToList<Disc>();
+		return discCollisions;
+	}
 
 	/**
 	* Parameters: Currently None
