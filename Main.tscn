@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfods5162q50v"]
 
 [ext_resource type="PackedScene" uid="uid://x3276k6nk7yd" path="res://level.tscn" id="3_wewt5"]
-[ext_resource type="PackedScene" uid="uid://cghxunnxl1nbo" path="res://game_state_controller.tscn" id="4_1pnvw"]
+[ext_resource type="PackedScene" uid="uid://detm50rutkyl4" path="res://game_state_controller.tscn" id="4_1pnvw"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -11,3 +11,4 @@ anchor_mode = 0
 [node name="Level" parent="." instance=ExtResource("3_wewt5")]
 
 [node name="GameStateController" parent="." instance=ExtResource("4_1pnvw")]
+z_index = 1
