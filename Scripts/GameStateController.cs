@@ -59,10 +59,26 @@ public partial class GameStateController : Node2D
 		foreach (Disc disc in Discs)
 		{
 			List<Disc> collisons = disc.HandleCollisons();
-			foreach (Disc d in collisons)
+			foreach (Disc other in collisons)
 			{
-				GD.Print(d);
+				if (gameState == PLAYER_LAUNCH && !other.player)
+				{
+					GD.Print(other.health);
+					other.health -= disc.damage;
+				}
+				else if (gameState == ENEMY_LAUNCH && other.player)
+				{
+					other.health -= disc.damage;
+				}
 			}
+		}
+		for (int i = Discs.Count - 1; i >= 0; i--)
+		{
+			if (Discs[i].health <= 0)
+				{
+					Discs[i].QueueFree();
+					Discs.RemoveAt(i);
+				}
 		}
 
 		switch(gameState) 

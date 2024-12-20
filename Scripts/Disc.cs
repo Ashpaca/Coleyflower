@@ -46,7 +46,7 @@ public partial class Disc : RigidBody2D
 		}
 
 		handledDiscCollisions = handledDiscCollisions.Intersect(collisions).ToList<Disc>();
-		discCollisions = collisions.Except(handledDiscCollisions).ToList<Disc>();
+		discCollisions = discCollisions.Union(collisions.Except(handledDiscCollisions).ToList<Disc>()).ToList<Disc>();
 	}
 
 	/**
