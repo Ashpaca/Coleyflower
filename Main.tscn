@@ -1,14 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfods5162q50v"]
+[gd_scene load_steps=4 format=3 uid="uid://cfods5162q50v"]
 
-[ext_resource type="PackedScene" uid="uid://x3276k6nk7yd" path="res://level.tscn" id="3_wewt5"]
+[ext_resource type="Script" path="res://Scripts/OmniController.cs" id="1_pxi28"]
+[ext_resource type="PackedScene" uid="uid://plk0f28j8uae" path="res://MainMenu.tscn" id="3_2gnw0"]
 [ext_resource type="PackedScene" uid="uid://detm50rutkyl4" path="res://game_state_controller.tscn" id="4_1pnvw"]
 
-[node name="Node2D" type="Node2D"]
+[node name="OmniController" type="Node2D"]
+script = ExtResource("1_pxi28")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="Level" parent="." instance=ExtResource("3_wewt5")]
+[node name="MainMenu" parent="." instance=ExtResource("3_2gnw0")]
 
 [node name="GameStateController" parent="." instance=ExtResource("4_1pnvw")]
 z_index = 1
+
+[connection signal="StartGame" from="MainMenu" to="." method="OnMainMenuStartButtonPressed"]

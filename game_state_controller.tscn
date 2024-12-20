@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://detm50rutkyl4"]
+[gd_scene load_steps=5 format=3 uid="uid://detm50rutkyl4"]
 
 [ext_resource type="Script" path="res://Scripts/GameStateController.cs" id="1_4k4qx"]
 [ext_resource type="PackedScene" uid="uid://cn5f1jtadyqrg" path="res://FellaMaker.tscn" id="2_fd2yb"]
 [ext_resource type="PackedScene" uid="uid://cj3o3yl8y1ovq" path="res://shooter.tscn" id="3_4eiac"]
+[ext_resource type="PackedScene" uid="uid://x3276k6nk7yd" path="res://level.tscn" id="4_utpyg"]
 
 [node name="GameStateController" type="Node2D"]
 script = ExtResource("1_4k4qx")
 
+[node name="Level" parent="." instance=ExtResource("4_utpyg")]
+
 [node name="FellaMaker" parent="." instance=ExtResource("2_fd2yb")]
 
 [node name="Shooter" parent="." instance=ExtResource("3_4eiac")]
+z_index = -1
