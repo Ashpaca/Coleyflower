@@ -9,6 +9,7 @@
 script = ExtResource("1_4k4qx")
 
 [node name="Level" parent="." instance=ExtResource("4_utpyg")]
+z_index = -10
 
 [node name="FellaMaker" parent="." instance=ExtResource("2_fd2yb")]
 
