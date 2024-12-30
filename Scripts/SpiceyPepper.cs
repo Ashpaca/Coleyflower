@@ -23,22 +23,21 @@ public partial class SpiceyPepper : Disc
 		base._PhysicsProcess(delta);
 
 		// if startFlaming is true it will spawn a flameInstance every few seconds until a maximum number is reached
-		if (startFlaming)
+		if (!startFlaming) {return;}
+			
+		timeSinceLastFlame += delta;
+		if (timeSinceLastFlame >= 20/LinearVelocity.Length() && numberOfFlames < MAX_FLAMES)
 		{
-			timeSinceLastFlame += delta;
-			if (timeSinceLastFlame >= 20/LinearVelocity.Length() && numberOfFlames < MAX_FLAMES)
-			{
-				timeSinceLastFlame = 0;
-				Node2D flameInstance = flameScene.Instantiate<Node2D>();
-        		flameInstance.Position = GlobalPosition;
-				createdFlames[numberOfFlames] = flameInstance;
-				numberOfFlames++;
-        		GetTree().Root.AddChild(flameInstance);
-			}
-			if (numberOfFlames >= MAX_FLAMES)
-			{
-				startFlaming = false;
-			}
+			timeSinceLastFlame = 0;
+			Node2D flameInstance = flameScene.Instantiate<Node2D>();
+        	flameInstance.Position = GlobalPosition;
+			createdFlames[numberOfFlames] = flameInstance;
+			numberOfFlames++;
+        	GetTree().Root.AddChild(flameInstance);
+		}
+		if (numberOfFlames >= MAX_FLAMES)
+		{
+			startFlaming = false;
 		}
 	}
 
