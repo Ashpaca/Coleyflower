@@ -48,11 +48,9 @@ shape = SubResource("RectangleShape2D_4on5s")
 
 [node name="Disk0" parent="." instance=ExtResource("2_m4hpy")]
 position = Vector2(251, 208)
-player = true
 
 [node name="Disk1" parent="." instance=ExtResource("2_m4hpy")]
 position = Vector2(159, 383)
-player = true
 
 [node name="Beetle0" parent="." instance=ExtResource("3_uwlpd")]
 position = Vector2(637, 145)

@@ -20,6 +20,8 @@ config/icon="res://Assets/icon.svg"
 window/size/viewport_width=960
 window/size/viewport_height=680
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="res://Assets/UiElements/cursorHand_grey.tres"
+mouse_cursor/custom_image_hotspot=Vector2(2, 2)
 
 [dotnet]
 
