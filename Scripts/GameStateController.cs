@@ -13,6 +13,7 @@ public partial class GameStateController : Node2D
 	List<Disc> Discs = new List<Disc>();
 
 	FellaMaker fellaMaker;
+	Node2D level;
 	int discType = 0;
 	bool isPlayersDisc = true;
 	Shooter shooter;
@@ -24,8 +25,10 @@ public partial class GameStateController : Node2D
 
 	public override void _Ready()
 	{
-		fellaMaker = GetNode<FellaMaker>("FellaMaker");
+		//fellaMaker = GetNode<FellaMaker>("FellaMaker");  Removed TODO: Delete?
 		shooter = GetNode<Shooter>("Shooter");
+		level = GetNode<Node2D>("Level");
+		StartLevel();
 	}
 
 	
@@ -44,7 +47,7 @@ public partial class GameStateController : Node2D
 		}
 
 		// Temporary things for testing purposes, used for spawning in new Discs
-		if (Input.IsActionJustPressed("mouse_2"))
+		/*if (Input.IsActionJustPressed("mouse_2"))
         {
 			Disc newDisc = fellaMaker.Spawn(GetGlobalMousePosition(), discType);
 			newDisc.player = isPlayersDisc;
@@ -54,7 +57,8 @@ public partial class GameStateController : Node2D
 		if (Input.IsActionJustPressed("scroll_down"))
 		{
 			discType = (discType + 1) % 2;
-		}
+		}*/// Removed TODO: Delete?
+
 		// temp tests for collisions
 		foreach (Disc disc in Discs)
 		{
@@ -98,6 +102,15 @@ public partial class GameStateController : Node2D
   			default:
     			GD.Print("oh no the gamestate has an invalid value");
     			break;
+		}
+	}
+
+	public void StartLevel()
+	{
+		Node2D disks = level.GetNode<Node2D>("Disks");
+		for (int i = 0; i < disks.GetChildCount(); i++)
+		{
+			Discs.Add(disks.GetChild<Disc>(i));
 		}
 	}
 
