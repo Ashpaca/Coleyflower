@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://x3276k6nk7yd"]
+[gd_scene load_steps=8 format=4 uid="uid://x3276k6nk7yd"]
 
 [ext_resource type="TileSet" uid="uid://b20ta2pq7fkog" path="res://LevelTileSet.tres" id="1_dw280"]
+[ext_resource type="PackedScene" uid="uid://dwm1m61uupj67" path="res://Disc.tscn" id="2_m4hpy"]
+[ext_resource type="PackedScene" uid="uid://dar6kifaq7paa" path="res://Beetle.tscn" id="3_uwlpd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txp5e"]
 size = Vector2(50, 1000)
@@ -43,3 +45,17 @@ shape = SubResource("RectangleShape2D_k5ceu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3"]
 position = Vector2(485, -19)
 shape = SubResource("RectangleShape2D_4on5s")
+
+[node name="Disk0" parent="." instance=ExtResource("2_m4hpy")]
+position = Vector2(251, 208)
+player = true
+
+[node name="Disk1" parent="." instance=ExtResource("2_m4hpy")]
+position = Vector2(159, 383)
+player = true
+
+[node name="Beetle0" parent="." instance=ExtResource("3_uwlpd")]
+position = Vector2(637, 145)
+
+[node name="Beetle1" parent="." instance=ExtResource("3_uwlpd")]
+position = Vector2(443, 496)
