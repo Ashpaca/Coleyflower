@@ -17,7 +17,7 @@ public partial class GameStateController : Node2D
 
 	FellaMaker fellaMaker;
 	Node2D level;
-	CanvasLayer hud;
+	HUD hud;
 	AudioStreamPlayer sfx;
 	int discType = 0;
 	bool isPlayersDisc = true;
@@ -33,7 +33,7 @@ public partial class GameStateController : Node2D
 		//fellaMaker = GetNode<FellaMaker>("FellaMaker");  Removed TODO: Delete?
 		shooter = GetNode<Shooter>("Shooter");
 		level = GetNode<Node2D>("Level");
-		hud = GetNode<CanvasLayer>("HUD");
+		hud = GetNode<HUD>("HUD");
 		sfx = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 	}
 
@@ -108,19 +108,22 @@ public partial class GameStateController : Node2D
     			break;
 			case LEVEL_COMPLETE:
 				GD.Print("well done!!!");
+				hud.ShowMessage("Well Done!!!");
     			break;
 			case LEVEL_FAIL:
 				GD.Print("You let vegetable-kind down!");
-    			break;
+				hud.ShowMessage("You Let Veggie-Kind Down!");
+				break;
   			default:
     			GD.Print("oh no the gamestate has an invalid value");
+				hud.ShowMessage("ERROR: Invalid Gamestate");
     			break;
 		}
 	}
 
 	public void StartLevel()
 	{
-		hud.Show();
+		hud.ShowMessage("Shoot Your Shot");
 		Node2D disks = level.GetNode<Node2D>("Disks");
 		for (int i = 0; i < disks.GetChildCount(); i++)
 		{

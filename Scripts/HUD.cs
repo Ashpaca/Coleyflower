@@ -3,38 +3,24 @@ using System;
 
 public partial class HUD : CanvasLayer
 {
-	[Signal]
-	public delegate void StartGameEventHandler();
+	Label message;
+	Timer timer;
 
-	public void ShowMessage(string text) {
-		Label message = GetNode<Label>("Message");
+    public override void _Ready()
+    {
+		message = GetNode<Label>("Message");
+		timer = GetNode<Timer>("MessageTimer");
+    }
+
+    public void ShowMessage(string text) {
 		message.Text = text;
 		message.Show();
 
-		GetNode<Timer>("MessageTimer").Start();
-	}
-
-	async public void ShowGameOver()
-	{
-		ShowMessage("Game Over");
-
-		Timer messageTimer = GetNode<Timer>("MessageTimer");
-		await ToSignal(messageTimer, Timer.SignalName.Timeout);
-
-		Label message = GetNode<Label>("Message");
-		message.Text = "Shoot Your Shot";
-		message.Show();
-
-		await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
-		GetNode<Button>("StartButton").Show();
-	}
-
-	private void OnStartButtonPressed() {
-		GetNode<Button>("StartButton").Hide();
-		EmitSignal(SignalName.StartGame);
+		timer.Start();
 	}
 
 	private void OnMessageTimerTimeout() {
+		GD.Print("timeout message");
 		GetNode<Label>("Message").Hide();
 	}
 }
