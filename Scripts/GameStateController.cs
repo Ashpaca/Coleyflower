@@ -14,6 +14,7 @@ public partial class GameStateController : Node2D
 
 	FellaMaker fellaMaker;
 	Node2D level;
+	CanvasLayer hud;
 	int discType = 0;
 	bool isPlayersDisc = true;
 	Shooter shooter;
@@ -28,7 +29,8 @@ public partial class GameStateController : Node2D
 		//fellaMaker = GetNode<FellaMaker>("FellaMaker");  Removed TODO: Delete?
 		shooter = GetNode<Shooter>("Shooter");
 		level = GetNode<Node2D>("Level");
-		StartLevel();
+		hud = GetNode<CanvasLayer>("HUD");
+
 	}
 
 	
@@ -107,6 +109,7 @@ public partial class GameStateController : Node2D
 
 	public void StartLevel()
 	{
+		hud.Show();
 		Node2D disks = level.GetNode<Node2D>("Disks");
 		for (int i = 0; i < disks.GetChildCount(); i++)
 		{

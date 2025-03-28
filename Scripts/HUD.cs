@@ -29,10 +29,6 @@ public partial class HUD : CanvasLayer
 		GetNode<Button>("StartButton").Show();
 	}
 
-	public void UpdateScore(int score) {
-		GetNode<Label>("ScoreLabel").Text = score.ToString();
-	}
-
 	private void OnStartButtonPressed() {
 		GetNode<Button>("StartButton").Hide();
 		EmitSignal(SignalName.StartGame);
