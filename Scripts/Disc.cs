@@ -59,7 +59,13 @@ public partial class Disc : RigidBody2D
 	{
 		discCollisions = discCollisions.Except(handledDiscCollisions).ToList<Disc>();
 		handledDiscCollisions = handledDiscCollisions.Union(discCollisions).ToList<Disc>();
-		return discCollisions;
+		List<Disc> collisionsToActOn = new List<Disc>();
+		for (int i = discCollisions.Count - 1; i >= 0; i--)
+		{
+			collisionsToActOn.Add(discCollisions[i]);
+			discCollisions.RemoveAt(i);
+		}
+		return collisionsToActOn;
 	}
 
 	/**
