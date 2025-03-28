@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 
 public partial class GameStateController : Node2D
 {
@@ -8,6 +9,8 @@ public partial class GameStateController : Node2D
 	const int PLAYER_LAUNCH = 2;
 	const int ENEMY_SELECTION = 3;
 	const int ENEMY_LAUNCH = 4;
+	const int LEVEL_COMPLETE = 5;
+	const int LEVEL_FAIL = 6;
 	int gameState = PLAYER_SELECTION;
 
 	List<Disc> Discs = new List<Disc>();
@@ -96,10 +99,16 @@ public partial class GameStateController : Node2D
     			PlayerLaunch();
     			break;
 			case ENEMY_SELECTION:
-    			ChangeState(ENEMY_LAUNCH);
+    			EnemySelection();
     			break;
   			case ENEMY_LAUNCH:
-    			ChangeState(PLAYER_SELECTION);
+    			EnemyLaunch();
+    			break;
+			case LEVEL_COMPLETE:
+				GD.Print("well done!!!");
+    			break;
+			case LEVEL_FAIL:
+				GD.Print("You let vegetable-kind down!");
     			break;
   			default:
     			GD.Print("oh no the gamestate has an invalid value");
@@ -176,6 +185,52 @@ public partial class GameStateController : Node2D
 				d.EndTurn();
 			}
 			ChangeState(ENEMY_SELECTION);
+		} 
+	}
+
+	private void EnemySelection()
+	{
+		List<Disc> enemyDiscs = new List<Disc>();
+		List<Disc> playerDiscs = new List<Disc>();
+		foreach (Disc d in Discs)
+		{
+			if (d.player) {playerDiscs.Add(d);}
+			else {enemyDiscs.Add(d);}
+		}
+		if (enemyDiscs.Count < 1)
+		{
+			ChangeState(LEVEL_COMPLETE);
+			return;
+		}
+		if (playerDiscs.Count < 1)
+		{
+			ChangeState(LEVEL_FAIL);
+			return;
+		}
+
+		enemyDiscs[0].ApplyCentralImpulse((playerDiscs[0].GlobalPosition - enemyDiscs[0].GlobalPosition).Normalized() * 3000);
+
+		ChangeState(ENEMY_LAUNCH);
+	}
+
+	private void EnemyLaunch()
+	{
+		bool doneMoving = true;
+		foreach (Disc d in Discs)
+		{
+			if (d.LinearVelocity.LengthSquared() > 0.1)
+			{
+				doneMoving = false;
+			}
+		}
+		
+		if (doneMoving)
+		{
+			foreach (Disc d in Discs)
+			{
+				d.EndTurn();
+			}
+			ChangeState(PLAYER_SELECTION);
 		} 
 	}
 }
