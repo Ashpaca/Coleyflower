@@ -18,6 +18,7 @@ public partial class GameStateController : Node2D
 	FellaMaker fellaMaker;
 	Node2D level;
 	CanvasLayer hud;
+	AudioStreamPlayer sfx;
 	int discType = 0;
 	bool isPlayersDisc = true;
 	Shooter shooter;
@@ -33,7 +34,7 @@ public partial class GameStateController : Node2D
 		shooter = GetNode<Shooter>("Shooter");
 		level = GetNode<Node2D>("Level");
 		hud = GetNode<CanvasLayer>("HUD");
-
+		sfx = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 	}
 
 	
@@ -70,6 +71,7 @@ public partial class GameStateController : Node2D
 			List<Disc> collisons = disc.HandleCollisons();
 			foreach (Disc other in collisons)
 			{
+				sfx.Play();
 				if (gameState == PLAYER_LAUNCH && !other.player)
 				{
 					GD.Print(other.health);
