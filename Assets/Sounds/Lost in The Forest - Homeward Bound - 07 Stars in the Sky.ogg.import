@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dk64t6b6nydx0"
+path="res://.godot/imported/Lost in The Forest - Homeward Bound - 07 Stars in the Sky.ogg-c18a673f1fd0cbf8c8674b5e0a538eba.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Lost in The Forest - Homeward Bound - 07 Stars in the Sky.ogg"
+dest_files=["res://.godot/imported/Lost in The Forest - Homeward Bound - 07 Stars in the Sky.ogg-c18a673f1fd0cbf8c8674b5e0a538eba.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

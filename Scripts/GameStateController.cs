@@ -1,7 +1,5 @@
 using Godot;
-using System;
 using System.Collections.Generic;
-using System.Data.Common;
 
 public partial class GameStateController : Node2D
 {
@@ -15,10 +13,11 @@ public partial class GameStateController : Node2D
 
 	List<Disc> Discs = new List<Disc>();
 
-	FellaMaker fellaMaker;
+    FellaMaker fellaMaker;
 	Node2D level;
 	HUD hud;
-	AudioStreamPlayer sfx;
+	AudioStreamPlayer sfxPlayer;
+	AudioStreamPlayer musicPlayer;
 	int discType = 0;
 	bool isPlayersDisc = true;
 	Shooter shooter;
@@ -34,7 +33,7 @@ public partial class GameStateController : Node2D
 		shooter = GetNode<Shooter>("Shooter");
 		level = GetNode<Node2D>("Level");
 		hud = GetNode<HUD>("HUD");
-		sfx = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+		sfxPlayer = GetNode<AudioStreamPlayer>("SFX");
 	}
 
 	
@@ -71,7 +70,7 @@ public partial class GameStateController : Node2D
 			List<Disc> collisons = disc.HandleCollisons();
 			foreach (Disc other in collisons)
 			{
-				sfx.Play();
+				sfxPlayer.Play();
 				if (gameState == PLAYER_LAUNCH && !other.player)
 				{
 					GD.Print(other.health);

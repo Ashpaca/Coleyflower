@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cvvg28gg6a7lk"
+path="res://.godot/imported/Lost in The Forest - I - 01 At Peace.ogg-2cccbb42dffa909d8350f4a68cf8e55d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Lost in The Forest - I - 01 At Peace.ogg"
+dest_files=["res://.godot/imported/Lost in The Forest - I - 01 At Peace.ogg-2cccbb42dffa909d8350f4a68cf8e55d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

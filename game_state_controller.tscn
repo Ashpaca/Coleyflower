@@ -17,6 +17,6 @@ z_index = -1
 
 [node name="HUD" parent="." instance=ExtResource("4_7g5v8")]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ft28j")
 volume_db = -2.441

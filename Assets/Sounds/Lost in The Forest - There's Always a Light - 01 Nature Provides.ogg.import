@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cq8g3l0m4kydo"
+path="res://.godot/imported/Lost in The Forest - There's Always a Light - 01 Nature Provides.ogg-09e868dd517346a327ecb01adf955f45.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Lost in The Forest - There's Always a Light - 01 Nature Provides.ogg"
+dest_files=["res://.godot/imported/Lost in The Forest - There's Always a Light - 01 Nature Provides.ogg-09e868dd517346a327ecb01adf955f45.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

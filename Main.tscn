@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfods5162q50v"]
+[gd_scene load_steps=8 format=3 uid="uid://cfods5162q50v"]
 
 [ext_resource type="Script" path="res://Scripts/OmniController.cs" id="1_pxi28"]
 [ext_resource type="PackedScene" uid="uid://plk0f28j8uae" path="res://MainMenu.tscn" id="3_2gnw0"]
 [ext_resource type="PackedScene" uid="uid://detm50rutkyl4" path="res://game_state_controller.tscn" id="4_1pnvw"]
+[ext_resource type="AudioStream" uid="uid://cq8g3l0m4kydo" path="res://Assets/Sounds/Lost in The Forest - There's Always a Light - 01 Nature Provides.ogg" id="4_jwjbn"]
+[ext_resource type="AudioStream" uid="uid://cvvg28gg6a7lk" path="res://Assets/Sounds/Lost in The Forest - I - 01 At Peace.ogg" id="5_u5fkf"]
+[ext_resource type="AudioStream" uid="uid://dk64t6b6nydx0" path="res://Assets/Sounds/Lost in The Forest - Homeward Bound - 07 Stars in the Sky.ogg" id="6_3il8j"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_7vjw4"]
+stream_count = 3
+stream_0 = ExtResource("4_jwjbn")
+stream_1 = ExtResource("5_u5fkf")
+stream_2 = ExtResource("6_3il8j")
 
 [node name="OmniController" type="Node2D"]
 script = ExtResource("1_pxi28")
@@ -14,5 +23,10 @@ anchor_mode = 0
 z_index = 1
 
 [node name="MainMenu" parent="." instance=ExtResource("3_2gnw0")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPlaylist_7vjw4")
+volume_db = -25.12
+autoplay = true
 
 [connection signal="StartGame" from="MainMenu" to="." method="OnMainMenuStartButtonPressed"]
